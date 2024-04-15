@@ -1,0 +1,50 @@
+query {
+	users {
+    id
+    name
+    created_on
+  }
+}
+
+query {
+	user(id:1){
+    id
+    name
+    created_on
+  }
+}
+
+mutation {
+  addUser(createUserInput:{
+    name:"Nitin Reddy",
+    email:"nitin.reddy@gmail.com"
+  }){
+    name
+    email
+  }
+}
+
+mutation {
+  updateUser(id:1,updateUserInput:{
+    name:"Nitin kumar",
+    email:"nitin.kumar@gmail.com"
+  }){
+    name
+    email
+  }
+}
+
+mutation {
+  deleteUser(id:3){
+    name
+    email
+  }
+}
+
+subscription {
+  sendSignupEmail {
+    id
+    name
+    email
+  }
+}

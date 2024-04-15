@@ -1,15 +1,15 @@
+
 import { Field, ObjectType } from "@nestjs/graphql"
-import { UserCourseEntity } from "src/entities/courses/user-course.entity/user-course.entity"
 
 @ObjectType({
-    description: "User model"
+    description: "Course model"
 })
 
-export class UserEntity {
+export class CourseEntity {
     @Field(() => Number, { nullable: true })
     id: number
     name: string
-    email: string
+    price: number
     @Field(() => Date, { nullable: true })
     created_at: Date
 }

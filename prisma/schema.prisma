@@ -14,9 +14,30 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  name       String
-  email      String   @unique
-  created_at DateTime @default(now())
+  id          Int           @id @default(autoincrement())
+  name        String
+  email       String        @unique
+  created_at  DateTime      @default(now())
+  UserCourses UserCourses[]
+
   @@map("user")
+}
+
+model Courses {
+  id          Int           @id @default(autoincrement())
+  name        String
+  price       Int           @default(0)
+  created_at  DateTime      @default(now())
+  UserCourses UserCourses[]
+
+  @@map("courses")
+}
+
+model UserCourses {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id    Int
+  course     Courses  @relation(fields: [course_id], references: [id], onDelete: Cascade)
+  course_id  Int
+  @@map("user_courses")
 }

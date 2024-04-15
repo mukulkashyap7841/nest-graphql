@@ -1,0 +1,18 @@
+[
+    {
+        "name": "GraphQL",
+        "price": 40
+    },
+    {
+        "name": "NodeJS",
+        "price": 100
+    },
+    {
+        "name": "Angular",
+        "price": 90
+    },
+    {
+        "name": "React",
+        "price": 50
+    }
+]

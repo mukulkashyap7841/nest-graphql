@@ -6,9 +6,9 @@
 type UserEntity {
   id: Float
   created_at: DateTime
-  created_on: String
   name: String!
   email: String!
+  courses: [CourseEntity!]
 }
 
 """
@@ -16,13 +16,24 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+"""Course model"""
+type CourseEntity {
+  id: Float
+  created_at: DateTime
+  name: String!
+  price: Float!
+}
+
 type Query {
   users: [UserEntity!]!
-  user(id: ID!): UserEntity
+  user(id: ID): UserEntity!
+  courses: [CourseEntity!]!
 }
 
 type Mutation {
   addUser(createUserInput: CreateUserInput!): UserEntity
+  updateUser(id: Float!, updateUserInput: UpdateUserInput!): UserEntity
+  deleteUser(id: ID!): UserEntity!
 }
 
 input CreateUserInput {
@@ -30,4 +41,15 @@ input CreateUserInput {
   created_at: DateTime
   name: String!
   email: String!
+}
+
+input UpdateUserInput {
+  id: Float
+  created_at: DateTime
+  name: String
+  email: String
+}
+
+type Subscription {
+  sendSignupEmail: UserEntity!
 }

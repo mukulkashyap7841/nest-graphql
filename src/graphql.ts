@@ -25,7 +25,7 @@ export interface UserEntity {
 
 export interface IQuery {
     users(): UserEntity[] | Promise<UserEntity[]>;
-    user(id: string): Nullable<UserEntity> | Promise<Nullable<UserEntity>>;
+    user(id: string): UserEntity | Promise<UserEntity>;
 }
 
 export interface IMutation {
